@@ -57,3 +57,13 @@ typings/
 # dotenv environment variables file
 .env
 
+
+# --------------------
+# これよりオリジナルの設定
+# --------------------
+
+# MacOSのメタファイル
+.DS_Store
+
+# プログラムの実行結果を格納するディレクトリ
+Output/
