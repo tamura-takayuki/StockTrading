@@ -1,0 +1,70 @@
+Gitのチップス
+
+新しいリポジトリをローカルに作成
+git init
+
+ワークツリーとインデックスの状態を確認する
+git status
+
+
+ファイルをインデックスに登録する
+git add file_name
+
+
+コミット
+git commit -m "commment"
+
+
+リポジトリの変更履歴
+git log
+
+
+gitkというツール
+gitk
+
+リモートリポジトリ作成
+①目的のフォルダに移動
+②git init --bare --shared
+
+
+ローカルレポジトリでclone
+http://akiniwa.hatenablog.jp/entry/2013/09/10/192518
+git clone ssh://ec2-user@54.64.238.121/home/ec2-user/git/git_training
+--設定--
+vim ~/.ssh/config
+	Host 54.64.238.121
+	User ec2-user
+	HostName 54.64.238.121
+	PreferredAuthentications publickey
+	identityfile ~/tamura_takayuki.pem
+
+
+リモートリポジトリのURLをoriginという名前で登録
+git remote add origin ssh://ec2-user@54.64.238.121/home/ec2-user/git/git_training
+
+
+ローカルレポジトリにpush
+git push origin master
+
+
+フォーマットされたlogの表示
+git log --graph --pretty=format:'%s %d'
+git config --global alias.graph "log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short"
+git graph
+
+
+ブランチを新しく作ってみよう
+git branch my_first_branch
+
+
+いらないブランチはしまっちゃおうねぇ
+git branch -d my_first_branch
+
+
+手元の hotfix ブランチがこのリモートブランチを追跡するように設定
+git branch --set-upstream-to=origin/hotfix hotfix
+
+
+リモートリポジトリのコミットやブランチを手元にコピーしてくるコマンド
+git fetch origin
+
