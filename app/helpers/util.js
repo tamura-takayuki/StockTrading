@@ -6,6 +6,8 @@
 var http = require('http');
 var fs = require('fs');
 
+
+
 /* =======================================================================
 Functions
 ========================================================================== */
@@ -17,8 +19,8 @@ module.exports = {
      * param file-> file name, data-> written strings, cb -> callback
      */
     writeFile : function(file, data, cb) {
-         fs.writeFile(file, data, 'utf8', function(err){
-             if (err) { console.log(err); }
+         fs.writeFile(file, data, 'utf8', (err) => {
+             if (err) throw err;
              else { console.log(data); cb(); }
          });
     },
@@ -29,8 +31,8 @@ module.exports = {
      * param file-> file name, data-> written strings
      */
     appendFile : function(file, data) {
-         fs.appendFile(file, data, 'utf8', function(err){
-             if (err) { console.log(err); }
+         fs.appendFile(file, data, 'utf8', (err) => {
+             if (err) throw err;
              else { console.log(data); }
          });
      },
@@ -41,8 +43,8 @@ module.exports = {
      * param file-> file name, cb-> callback
      */
     readFile : function(file, cb) {
-         fs.readFile(file, 'utf8', function(err, data){
-             if (err) { console.log(err); }
+         fs.readFile(file, 'utf8', (err, data) => {
+             if (err) throw err;
              else { cb(data); }
          });
     },

@@ -66,7 +66,7 @@ typings/
 .DS_Store
 
 # コミットさせたくないファイルを格納するディレクトリ
-CommitIgnore/
+_commit_ignore/
 
 # プログラムの実行結果を格納するディレクトリ
-Output/
+output/
