@@ -21,11 +21,12 @@ module.exports = {
      */
     getHtml : function(url, cb) {
         client.fetch(url, function (err, $, res, body) {
-            if (err) {
-                return console.log(err);
-            } else {
-                cb($, res, body);
-            }
+
+            // エラーならログを出力して終了
+            if (err) { return console.log(err); }
+
+            // 成功ならコールバック関数の実行
+            else { cb($, res, body); }
         });
     },
 
@@ -36,11 +37,11 @@ module.exports = {
      */
     getHtmlQuery : function(url, q, cb) {
         client.fetch(url, q, function (err, $, res, body) {
-            if (err) {
-                return console.log(err);
-            } else {
-                cb($, res, body);
-            }
+            // エラーならログを出力して終了
+            if (err) { return console.log(err); }
+
+            // 成功ならコールバック関数の実行
+            else { cb($, res, body); }
         });
     },
 
@@ -61,17 +62,18 @@ module.exports = {
      */
     createDownloadManager : function(cb) {
 
-        client.download.on('ready', function (stream) {
-            stream.pipe(fs.createWriteStream(imgSavePath));
-            console.log(stream.url.href + 'をダウンロードしました');
-        })
-        .on('error', function (err) {
-            console.error(err.url + 'をダウンロードできませんでした: ' + err.message);
-        })
-        .on('end', function () {
-            console.log('ダウンロードが完了しました');
-            cb();
-        });
+        client.download
+            .on('ready', function (stream) {
+                stream.pipe(fs.createWriteStream(imgSavePath));
+                console.log(stream.url.href + 'をダウンロードしました');
+            })
+            .on('error', function (err) {
+                console.error(err.url + 'をダウンロードできませんでした: ' + err.message);
+            })
+            .on('end', function () {
+                console.log('ダウンロードが完了しました');
+                cb();
+            });
     },
 
 }

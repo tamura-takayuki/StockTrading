@@ -5,7 +5,7 @@
 /* read modules */
 var Slack = require('slack-node');
 
-// webhookUri の設定
+/* webhookUri の設定 */
 var slack = new Slack();
 var webhookUri = "https://hooks.slack.com/services/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";
 slack.setWebhook(webhookUri);
@@ -30,8 +30,12 @@ module.exports = {
             icon_emoji: ic,
             text: txt,
         }, function(err, response) {
-            if (err) { return console.dir(err); }// エラーならログを出力して終了
-            console.dir(response);// 結果の出力
+
+            // エラーならログを出力して終了
+            if (err) { return console.dir(err); }
+            
+            // 結果の出力
+            console.dir(response);
         });
     },
 }
